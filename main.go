@@ -12,7 +12,7 @@ import (
 
 func main() {
 	secret := os.Getenv("LINE_SECRET")
-	accessToken := os.Getenv("LINE_ACESS_TOKEN")
+	accessToken := os.Getenv("LINE_ACCESS_TOKEN")
 
 	handler, err := httphandler.New(secret, accessToken)
 	if err != nil {
