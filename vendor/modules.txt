@@ -1,8 +1,5 @@
 # github.com/golang/protobuf v1.3.1
 github.com/golang/protobuf/proto
-# github.com/line/line-bot-sdk-go v6.3.0+incompatible
-github.com/line/line-bot-sdk-go/linebot
-github.com/line/line-bot-sdk-go/linebot/httphandler
 # golang.org/x/net v0.0.0-20190603091049-60506f45cf65
 golang.org/x/net/context
 # google.golang.org/appengine v1.6.1

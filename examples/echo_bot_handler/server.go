@@ -21,8 +21,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/line/line-bot-sdk-go/linebot"
-	"github.com/line/line-bot-sdk-go/linebot/httphandler"
+	"github.com/ning-hu/mh-line-bot/linebot"
+	"github.com/ning-hu/mh-line-bot/httphandler"
 )
 
 func main() {

@@ -19,7 +19,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/line/line-bot-sdk-go/linebot"
+	"github.com/ning-hu/mh-line-bot/linebot"
 )
 
 func main() {

@@ -25,8 +25,8 @@ import (
 	aelog "google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
 
-	"github.com/line/line-bot-sdk-go/linebot"
-	"github.com/line/line-bot-sdk-go/linebot/httphandler"
+	"github.com/ning-hu/mh-line-bot/linebot"
+	"github.com/ning-hu/mh-line-bot/linebot/httphandler"
 )
 
 func init() {
