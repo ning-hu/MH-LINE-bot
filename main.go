@@ -25,6 +25,8 @@ func main() {
 			log.Fatal(err)
 		}
 
+		fmt.Printf("%+v", events)
+
 		for _, event := range events {
 			if event.Type == linebot.EventTypeMessage {
 				_, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("hello")).Do()
