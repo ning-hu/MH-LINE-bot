@@ -20,16 +20,18 @@ func main() {
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/callback", func(w http.ResponseWriter, req *http.Request) {
 		events, err := bot.ParseRequest(req)
+		log.Printf("%+v\n", events)
 		if err != nil {
 			if err == linebot.ErrInvalidSignature {
+				log.Println("Invalid Signature")
 				w.WriteHeader(400)
 			} else {
+				log.Println("Server Error")
 				w.WriteHeader(500)
 			}
 			return
 		}
 		for _, event := range events {
-			log.Printf("%+v\n", event)
 			if event.Type == linebot.EventTypeMessage {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
