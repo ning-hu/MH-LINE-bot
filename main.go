@@ -12,6 +12,10 @@ import (
 
 var bot *linebot.Client
 
+LINE_ID := map[string]string{
+	"Ning": "U275f7f23c237a5589177d1d32830389",
+}
+
 func main() {
 	secret := os.Getenv("LINE_SECRET")
 	accessToken := os.Getenv("LINE_ACCESS_TOKEN")
@@ -42,8 +46,8 @@ func main() {
 				fmt.Printf("%+v\n", event.Source)
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
-					if strings.Contains(message.Text, "@Ning") {
-						sendMessage(event.ReplyToken, "@"+event.Source.UserID+" don't care")
+					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
+						sendMessage(event.ReplyToken, `¯\_(ツ)_/¯`)
 					}
 				}
 			}
