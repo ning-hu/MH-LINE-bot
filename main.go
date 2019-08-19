@@ -44,10 +44,10 @@ func main() {
 				case *linebot.TextMessage:
 					resMessage := []string{}
 					if strings.Contains(message.Text, "@Rick") {
-						findMention(resMessage, "@Rick", message.Text, "rick is probably busy.. ask lev")
+						findMention(&resMessage, "@Rick", message.Text, "rick is probably busy.. ask lev")
 					}
 					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
-						findMention(resMessage, "@Ning", message.Text, `¯\_(ツ)_/¯`)
+						findMention(&resMessage, "@Ning", message.Text, `¯\_(ツ)_/¯`)
 					}
 					sendMessage(event.ReplyToken, strings.Join(resMessage, "\n"))
 				}
@@ -67,11 +67,11 @@ func sendMessage(token, message string) {
 }
 
 // There are users with names that start with `Rick`
-func findMention(messages []string, mention, message, response string) {
+func findMention(messages *[]string, mention, message, response string) {
 	words := strings.Split(message, " ")
 	for _, word := range words {
 		if word == mention {
-			messages = append(messages, response)
+			*messages = append(*messages, response)
 			break
 		}
 	}
