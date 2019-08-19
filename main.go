@@ -43,16 +43,13 @@ func main() {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					resMessage := []string{}
-					if os.Getenv("USER") == "rick" {
-						if strings.Contains(message.Text, "@Rick") {
-							resMessage = append(resMessage, "I'm busy. Ask Lev")
-						}
-					} else {
-						if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
-							resMessage = append(resMessage, `¯\_(ツ)_/¯`)
-						}
+					if strings.Contains(message.Text, "@Rick") {
+						resMessage = append(resMessage, "I think Rick is busy. Ask Lev.")
 					}
-					sendMessage(event.ReplyToken, strings.Join(resMessage, " "))
+					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
+						resMessage = append(resMessage, `¯\_(ツ)_/¯`)
+					}
+					sendMessage(event.ReplyToken, strings.Join(resMessage, "\n"))
 				}
 			}
 		}
