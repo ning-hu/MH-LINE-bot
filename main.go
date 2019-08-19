@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -41,13 +40,9 @@ func main() {
 		}
 	})
 
-	http.HandleFunc("/.well-known/acme-challenge/iejmNt4sz-ZKxe9H0ExzIT8hguHWtbhgBQL9UeLSxA8", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "iejmNt4sz-ZKxe9H0ExzIT8hguHWtbhgBQL9UeLSxA8.PXkXecLYabBTs7tPtwiUDttGgWLCXL3AGQljK8RLd84")
-	})
-
 	// This is just sample code.
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
-	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
+	if err := http.ListenAndServeTLS(":"+os.Getenv("PORT"), "server.crt", "server.key", nil); err != nil {
 		log.Fatal(err)
 	}
 }
