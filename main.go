@@ -12,10 +12,6 @@ import (
 
 var bot *linebot.Client
 
-LINE_ID := map[string]string{
-	"Ning": "U275f7f23c237a5589177d1d32830389",
-}
-
 func main() {
 	secret := os.Getenv("LINE_SECRET")
 	accessToken := os.Getenv("LINE_ACCESS_TOKEN")
