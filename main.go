@@ -5,7 +5,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
+	"unicode/utf16"
 
 	"github.com/ning-hu/mh-line-bot/linebot"
 )
@@ -45,7 +47,9 @@ func main() {
 					resMessage := []string{}
 					if os.Getenv("USER") == "rick" {
 						if strings.Contains(message.Text, "@Rick") {
-							resMessage = append(resMessage, `I'm busy. Ask Lev \u0x10009B`)
+							emoji := strconv.ParseInt("0x10009B", 0, 16)
+							emojiString := fmt.SPrintf("I'm busy. Ask Lev %c", utf16.Decode([]uint16{uint16(emoji)}))
+							resMessage = append(resMessage, emojiString)
 						}
 					} else {
 						if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
