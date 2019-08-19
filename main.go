@@ -46,9 +46,9 @@ func main() {
 					resMessage := []string{}
 					if os.Getenv("USER") == "rick" {
 						if strings.Contains(message.Text, "@Rick") {
-							emoji, _ := strconv.ParseInt("\uDBC0\uDC84", 0, 16)
-							emojiString := fmt.Sprintf("I'm busy. Ask Lev %s", string(emoji))
-							resMessage = append(resMessage, emojiString)
+							// emoji, _ := strconv.ParseInt("\uDBC0\uDC84", 0, 16)
+							// emojiString := fmt.Sprintf("I'm busy. Ask Lev \uDBC0\uDC84", string(emoji))
+							resMessage = append(resMessage, "I'm busy. Ask Lev \uDBC0\uDC84")
 						}
 					} else {
 						if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
