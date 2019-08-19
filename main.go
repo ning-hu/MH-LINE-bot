@@ -43,7 +43,7 @@ func main() {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					if strings.Contains(message.Text, "@Ning") {
-						sendMessage(event.ReplyToken, "don't care")
+						sendMessage(event.ReplyToken, "@"+event.Source.UserID+" don't care")
 					}
 				}
 			}
