@@ -47,7 +47,7 @@ func main() {
 					resMessage := []string{}
 					if os.Getenv("USER") == "rick" {
 						if strings.Contains(message.Text, "@Rick") {
-							emoji := strconv.ParseInt("0x10009B", 0, 16)
+							emoji, _ := strconv.ParseInt("0x10009B", 0, 16)
 							emojiString := fmt.SPrintf("I'm busy. Ask Lev %c", utf16.Decode([]uint16{uint16(emoji)}))
 							resMessage = append(resMessage, emojiString)
 						}
