@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/ning-hu/mh-line-bot/linebot"
@@ -48,7 +47,7 @@ func main() {
 						if strings.Contains(message.Text, "@Rick") {
 							// emoji, _ := strconv.ParseInt("\uDBC0\uDC84", 0, 16)
 							// emojiString := fmt.Sprintf("I'm busy. Ask Lev \uDBC0\uDC84", string(emoji))
-							resMessage = append(resMessage, "I'm busy. Ask Lev \uDBC0\uDC84")
+							resMessage = append(resMessage, `I'm busy. Ask Lev \uDBC0\uDC84`)
 						}
 					} else {
 						if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
