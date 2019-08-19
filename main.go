@@ -29,6 +29,7 @@ func main() {
 			return
 		}
 		for _, event := range events {
+			log.Printf("%+v\n", event)
 			if event.Type == linebot.EventTypeMessage {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
@@ -40,9 +41,8 @@ func main() {
 		}
 	})
 
-	// This is just sample code.
-	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
 	if err := http.ListenAndServeTLS(":"+os.Getenv("PORT"), "server.crt", "server.key", nil); err != nil {
+		log.Print("Fail")
 		log.Fatal(err)
 	}
 }
