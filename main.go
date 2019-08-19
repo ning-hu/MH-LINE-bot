@@ -5,15 +5,19 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/ning-hu/mh-line-bot/linebot"
 )
+
+var bot *linebot.Client
 
 func main() {
 	secret := os.Getenv("LINE_SECRET")
 	accessToken := os.Getenv("LINE_ACCESS_TOKEN")
 
-	bot, err := linebot.New(secret, accessToken)
+	var err error
+	bot, err = linebot.New(secret, accessToken)
 	if err != nil {
 		log.Fatal("Error creating a new http handler")
 	}
@@ -32,12 +36,13 @@ func main() {
 			return
 		}
 		for _, event := range events {
+			log.Println("event.UserID")
 			if event.Type == linebot.EventTypeMessage {
 				fmt.Printf("%+v\n", event)
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
-					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("@Ning "+message.Text)).Do(); err != nil {
-						log.Print(err)
+					if strings.Contains(message.Text, "@Ning") {
+						sendMessage(event.ReplyToken, "don't care")
 					}
 				}
 			}
@@ -46,5 +51,11 @@ func main() {
 
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func sendMessage(token, message string) {
+	if _, err := bot.ReplyMessage(token, linebot.NewTextMessage(message)).Do(); err != nil {
+		log.Print(err)
 	}
 }
