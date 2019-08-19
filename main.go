@@ -36,9 +36,10 @@ func main() {
 			return
 		}
 		for _, event := range events {
-			log.Println("event.UserID")
+			log.Println(event.Source.UserID)
 			if event.Type == linebot.EventTypeMessage {
 				fmt.Printf("%+v\n", event)
+				fmt.Printf("%+v\n", event.Source)
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					if strings.Contains(message.Text, "@Ning") {
