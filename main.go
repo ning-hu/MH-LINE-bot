@@ -42,14 +42,17 @@ func main() {
 				fmt.Printf("%+v\n", event.Source)
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
-					message := []string{}
-					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
-						message = append(message, `¯\_(ツ)_/¯`)
+					resMessage := []string{}
+					if os.Getenv("USER") == "rick" {
+						if strings.Contains(message.Text, "@Rick") {
+							resMessage = append(resMessage, `I'm busy. Ask Lev \u0x10009B`)
+						}
+					} else {
+						if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
+							resMessage = append(resMessage, `¯\_(ツ)_/¯`)
+						}
 					}
-					if strings.Contains(message.Text, "@Rick") {
-						message = append(message, `I'm busy. Ask Lev \u0x10009B`)
-					}
-					sendMessage(event.ReplyToken, strings.Join(message, " "))
+					sendMessage(event.ReplyToken, strings.Join(resMessage, " "))
 				}
 			}
 		}
