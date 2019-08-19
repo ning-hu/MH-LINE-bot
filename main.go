@@ -44,7 +44,7 @@ func main() {
 				case *linebot.TextMessage:
 					resMessage := []string{}
 					if strings.Contains(message.Text, "@Rick") {
-						resMessage = append(resMessage, "I think Rick is busy. Ask Lev.")
+						resMessage = append(resMessage, "rick is probably busy.. ask lev")
 					}
 					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
 						resMessage = append(resMessage, `¯\_(ツ)_/¯`)
