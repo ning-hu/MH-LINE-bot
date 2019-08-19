@@ -41,7 +41,7 @@ func main() {
 		}
 	})
 
-	if err := http.ListenAndServeTLS(":"+os.Getenv("PORT"), "server.crt", "server.key", nil); err != nil {
+	if err := http.ListenAndServe(":"+os.Getenv("PORT"), nil); err != nil {
 		log.Print("Fail")
 		log.Fatal(err)
 	}
