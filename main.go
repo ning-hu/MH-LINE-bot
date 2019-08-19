@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -32,7 +33,7 @@ func main() {
 		}
 		for _, event := range events {
 			if event.Type == linebot.EventTypeMessage {
-				log.Printf("%+v\n", event)
+				fmt.Printf("%+v\n", event)
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("@Ning "+message.Text)).Do(); err != nil {
