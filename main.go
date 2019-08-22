@@ -49,6 +49,10 @@ func main() {
 					if strings.Contains(message.Text, "@Ning") && strings.Contains(message.Text, "?") {
 						findMention(&resMessage, "@Ning", message.Text, `¯\_(ツ)_/¯`)
 					}
+					if strings.Contains(message.Text, "@Mok") {
+						findMention(&resMessage, "@Mok", message.Text, "i love rick and ning")
+					}
+
 					sendMessage(event.ReplyToken, strings.Join(resMessage, "\n"))
 				}
 			}
